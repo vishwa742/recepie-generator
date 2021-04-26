@@ -144,7 +144,6 @@ textarea {
 
 .item {
   background: white;
-  display: flex;
 
   justify-content: space-between;
   max-width: var(--fixed-width);
@@ -168,6 +167,7 @@ textarea {
 }
 .item p {
   margin-bottom: 0;
+  padding: 0;
 }
 
 /* CSS From https://javascript.plainenglish.io/react-tesseract-ocr-tutorial-d72bb04b5094 */

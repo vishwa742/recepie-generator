@@ -10,6 +10,17 @@ function ImageLoader() {
   const [ocrText, setOcrText] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [store, setStore] = useState("");
+  const [words, setWords] = useState([]);
+
+  const removedWords = [
+    "Price",
+    "Summary",
+    "item",
+    "Subtotatal",
+    " Sales",
+    "Tax",
+    "Total",
+  ];
 
   const onDrop = (_, pictureUrl) => {
     setPicUrl(pictureUrl);
@@ -21,9 +32,12 @@ function ImageLoader() {
         text = text.replace(/[0-9]/g, "");
         text = text.replace(/[$.,]/g, "");
         text = text.split(" ");
-        const words = new Set(Array.from(text));
-        console.log(words);
-        setOcrText((oldArray) => [...oldArray, words]);
+        const wordFiltered = new Set(Array.from(text));
+        console.log(wordFiltered);
+        setWords(...words, wordFiltered);
+        setWords((oldArray) => [...oldArray, words]);
+
+        setOcrText((oldArray) => [...oldArray, wordFiltered]);
       })
     );
     setIsLoading(true);
@@ -53,12 +67,11 @@ function ImageLoader() {
         </div>
         {ocrText.length > 0 ? (
           <ul className="item">
-            {ocrText.map((ot) => (
-              <li className="ocr-element" key={ocrText.indexOf(ot)}>
-                <strong>{ocrText.indexOf(ot) + 1}</strong>
-
+            {words.map((ot) => (
+              <p className="ocr-element" key={words.indexOf(ot)}>
+                {/* <strong>{words.indexOf(ot) + 1}</strong> */}
                 {ot}
-              </li>
+              </p>
             ))}
           </ul>
         ) : (
