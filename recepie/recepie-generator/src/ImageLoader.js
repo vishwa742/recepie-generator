@@ -9,6 +9,7 @@ function ImageLoader() {
   const [picUrl, setPicUrl] = useState([]);
   const [ocrText, setOcrText] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [store, setStore] = useState("");
 
   const onDrop = (_, pictureUrl) => {
     setPicUrl(pictureUrl);
@@ -17,7 +18,12 @@ function ImageLoader() {
   const runOcr = () => {
     picUrl.forEach((picture) =>
       Tesseract.recognize(picture, "eng").then(({ data: { text } }) => {
-        setOcrText((oldArray) => [...oldArray, text]);
+        text = text.replace(/[0-9]/g, "");
+        text = text.replace(/[$.,]/g, "");
+        text = text.split(" ");
+        const words = new Set(Array.from(text));
+        console.log(words);
+        setOcrText((oldArray) => [...oldArray, words]);
       })
     );
     setIsLoading(true);
@@ -50,6 +56,7 @@ function ImageLoader() {
             {ocrText.map((ot) => (
               <li className="ocr-element" key={ocrText.indexOf(ot)}>
                 <strong>{ocrText.indexOf(ot) + 1}</strong>
+
                 {ot}
               </li>
             ))}
