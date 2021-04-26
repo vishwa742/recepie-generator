@@ -11,15 +11,21 @@ function ImageLoader() {
   const [isLoading, setIsLoading] = useState(false);
   const [store, setStore] = useState("");
   const [words, setWords] = useState([]);
+  var tester = [];
 
   const removedWords = [
-    "Price",
-    "Summary",
+    "Product",
+    "aty:",
+    "Z Total:",
+    "Order",
+    "Summary item",
     "item",
-    "Subtotatal",
-    " Sales",
+    "Subtotat",
+    "Sales",
     "Tax",
     "Total",
+    "Total:",
+    "best",
   ];
 
   const onDrop = (_, pictureUrl) => {
@@ -37,10 +43,11 @@ function ImageLoader() {
         text = text.split(" ");
 
         const wordFiltered = new Set(Array.from(text));
-        console.log(wordFiltered);
+        //console.log(wordFiltered);
         setWords(...words, wordFiltered);
         setWords((oldArray) => [...oldArray, words]);
-
+        //setStore(words.filter((word) => word.length > 3));
+        console.log(words);
         setOcrText((oldArray) => [...oldArray, wordFiltered]);
       })
     );
@@ -72,9 +79,22 @@ function ImageLoader() {
         {ocrText.length > 0 ? (
           <ul className="item">
             {words.map((ot) => {
-              // console.log(words[words.indexOf(ot)]);
-              console.log(typeof ot);
-              return <div>{ot}</div>;
+              console.log(ot);
+              if (
+                ot != "Product" &&
+                ot != "aty:" &&
+                ot != "Z Total:" &&
+                ot != "Summary item" &&
+                ot != "Sales" &&
+                ot != "item" &&
+                ot != "Subtotat" &&
+                ot != "Sales" &&
+                ot != "Tax" &&
+                ot != "Total:" &&
+                ot != "Order"
+              ) {
+                return <div>{ot}</div>;
+              }
             })}
           </ul>
         ) : (
