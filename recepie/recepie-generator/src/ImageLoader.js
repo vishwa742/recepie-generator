@@ -1,4 +1,4 @@
-// OCR code from: https://javascript.plainenglish.io/react-tesseract-ocr-tutorial-d72bb04b5094
+// OCR Tutorial from: https://javascript.plainenglish.io/react-tesseract-ocr-tutorial-d72bb04b5094
 
 import React, { useState } from "react";
 import Tesseract from "tesseract.js";

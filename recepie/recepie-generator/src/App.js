@@ -4,7 +4,12 @@ import uuid from "react-uuid";
 import BaseIngredients from "./BaseIngredients";
 import MainIngredients from "./MainIngredients";
 function App() {
-  const [ingredients, setIngredients] = useState([]);
+  const [ingredients, setIngredients] = useState([
+    { id: uuid(), title: "Salt" },
+    { id: uuid(), title: "Pepper" },
+    { id: uuid(), title: "Oil" },
+    { id: uuid(), title: "Bread" },
+  ]);
   const onAddIngredient = () => {
     console.log(ingredients);
     const newIngredients = {
