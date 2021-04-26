@@ -144,19 +144,14 @@ textarea {
 
 .item {
   background: white;
-
   justify-content: space-between;
-  max-width: var(--fixed-width);
   margin: 2rem auto;
   align-items: center;
-  border-radius: var(--radius);
 }
 .item button,
 .item a {
   background: transparent;
   border-color: transparent;
-  color: var(--clr-primary-5);
-  letter-spacing: var(--spacing);
   cursor: pointer;
 }
 .item {

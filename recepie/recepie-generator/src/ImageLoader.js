@@ -31,7 +31,11 @@ function ImageLoader() {
       Tesseract.recognize(picture, "eng").then(({ data: { text } }) => {
         text = text.replace(/[0-9]/g, "");
         text = text.replace(/[$.,]/g, "");
+
+        const textSting = text.replace(" ", ",");
+
         text = text.split(" ");
+
         const wordFiltered = new Set(Array.from(text));
         console.log(wordFiltered);
         setWords(...words, wordFiltered);
@@ -67,12 +71,11 @@ function ImageLoader() {
         </div>
         {ocrText.length > 0 ? (
           <ul className="item">
-            {words.map((ot) => (
-              <p className="ocr-element" key={words.indexOf(ot)}>
-                {/* <strong>{words.indexOf(ot) + 1}</strong> */}
-                {ot}
-              </p>
-            ))}
+            {words.map((ot) => {
+              // console.log(words[words.indexOf(ot)]);
+              console.log(typeof ot);
+              return <div>{ot}</div>;
+            })}
           </ul>
         ) : (
           <ClipLoader color="#ffffff" loading={isLoading} size={150} />
