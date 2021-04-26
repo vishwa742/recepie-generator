@@ -40,7 +40,7 @@ button:hover {
   display: flex;
 }
 
-/* SIDEBAR STYLES */
+/* CSS From https://github.com/jrgrimshaw/notes-app-tutorial/blob/main/src/App.css  */
 
 .app-sidebar {
   width: 30%;
@@ -88,8 +88,6 @@ button:hover {
   background: #08c;
   color: white;
 }
-
-/* NOTE EDITOR/PREVIEW (MAIN) STYLES */
 
 .app-main {
   width: 70%;
@@ -141,4 +139,52 @@ textarea {
 .preview-title {
   padding: 25px 25px 0 25px;
   margin: 0;
+}
+
+.item {
+  background: white;
+  display: flex;
+
+  justify-content: space-between;
+  max-width: var(--fixed-width);
+  margin: 2rem auto;
+  align-items: center;
+  border-radius: var(--radius);
+}
+.item button,
+.item a {
+  background: transparent;
+  border-color: transparent;
+  color: var(--clr-primary-5);
+  letter-spacing: var(--spacing);
+  cursor: pointer;
+}
+.item {
+  padding: 1rem 2rem;
+}
+.item h4 {
+  margin-bottom: 0;
+}
+.item p {
+  margin-bottom: 0;
+}
+
+/* CSS From https://javascript.plainenglish.io/react-tesseract-ocr-tutorial-d72bb04b5094 */
+.ocr-button {
+  width: 6rem;
+  height: 2rem;
+  color: white;
+  background-color: #3f4257;
+  border-radius: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2rem;
+  padding: 0 1rem;
+  cursor: pointer;
+  transition: 0.2s linear;
+}
+
+.ocr-button:hover {
+  transform: scale(1.1);
 }
