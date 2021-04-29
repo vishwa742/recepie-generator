@@ -3,7 +3,6 @@ import { useState } from "react";
 import uuid from "react-uuid";
 import BaseIngredients from "./BaseIngredients";
 import MainIngredients from "./MainIngredients";
-const newIngredients = [];
 
 function App() {
   const [ingredients, setIngredients] = useState([]);
@@ -13,10 +12,11 @@ function App() {
   };
 
   const getIngredients = (data) => {
-    data.map((indrec) => {
-      setIngredients([...ingredients, "indrec"]);
-      console.log(ingredients);
-      //newIngredients.push(indrec);
+    data.map((item, i) => {
+      console.log(item);
+      // setIngredients([...ingredients, data[i]]);
+      setIngredients((ingredients) => [...ingredients, data[i]]);
+      //console.log(ingredients);
     });
 
     // console.log("Reee", data);
