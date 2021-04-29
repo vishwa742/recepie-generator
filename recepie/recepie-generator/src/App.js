@@ -7,19 +7,15 @@ import MainIngredients from "./MainIngredients";
 function App() {
   const [ingredients, setIngredients] = useState([]);
   const onAddIngredient = () => {
-    // setIngredients([newIngredients, ...ingredients]);
+    setIngredients(["Random Ingredient", ...ingredients]);
     console.log(ingredients);
   };
 
   const getIngredients = (data) => {
     data.map((item, i) => {
       console.log(item);
-      // setIngredients([...ingredients, data[i]]);
       setIngredients((ingredients) => [...ingredients, data[i]]);
-      //console.log(ingredients);
     });
-
-    // console.log("Reee", data);
   };
   return (
     <div className="App">
