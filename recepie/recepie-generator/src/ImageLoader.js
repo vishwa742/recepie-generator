@@ -1,17 +1,15 @@
 // OCR Tutorial from: https://javascript.plainenglish.io/react-tesseract-ocr-tutorial-d72bb04b5094
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Tesseract from "tesseract.js";
 import ImageUploader from "react-images-upload";
 import ClipLoader from "react-spinners/ClipLoader";
 
-function ImageLoader() {
+function ImageLoader({ getIngredients }) {
   const [picUrl, setPicUrl] = useState([]);
   const [ocrText, setOcrText] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [store, setStore] = useState("");
   const [words, setWords] = useState([]);
-  var tester = [];
   const items = words.toString();
   const [recepie, setRecepie] = useState([]);
 
@@ -19,16 +17,16 @@ function ImageLoader() {
     setPicUrl(pictureUrl);
   };
 
-  const getRecepies = () => {
+  const getRecepie = () => {
     fetch(
       `https://api.spoonacular.com/recipes/findByIngredients?apiKey=4b4353c06ae445229cad091a7b2abf34&ingredients=` +
         items +
-        `&number=15&ranking=2`
+        `&number=14&ranking=2`
     )
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
-        //console.log(words);
+        //console.log(data);
+        setRecepie(data);
       });
   };
 
@@ -42,7 +40,6 @@ function ImageLoader() {
         const wordFiltered = new Set(Array.from(text));
         setWords(...words, wordFiltered);
         setWords((oldArray) => [...oldArray, words]);
-        //console.log(words);
         setOcrText((oldArray) => [...oldArray, wordFiltered]);
       })
     );
@@ -74,7 +71,7 @@ function ImageLoader() {
         {ocrText.length > 0 ? (
           <ul className="item">
             {words.map((ot) => {
-              console.log(ot);
+              //console.log(ot);
               if (
                 ot !== "Product" &&
                 ot !== "aty:" &&
@@ -95,8 +92,23 @@ function ImageLoader() {
         ) : (
           <ClipLoader color="#ffffff" loading={isLoading} size={150} />
         )}
-        {/* {recepie.length > 0 && <div>Hello {recepie.title}</div>} */}
-        <button onClick={getRecepies}>Click me</button>
+
+        <button onClick={getRecepie}>Show Recepies</button>
+        <button
+          onClick={() => {
+            getIngredients(words);
+          }}
+        >
+          STests
+        </button>
+        <div>
+          {recepie.map((indrec) => (
+            <div>
+              <div>{indrec.title}</div>
+              <img src={indrec.image} />
+            </div>
+          ))}
+        </div>
       </div>
     </>
   );

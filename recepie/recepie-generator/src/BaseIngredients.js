@@ -10,7 +10,7 @@ function BaseIngredients({ ingredients, onAddIngredient }) {
           {ingredients.map((ingredient) => (
             <div className="app-sidebar-items">
               <div className="sidebar-note-title">
-                <strong>{ingredient.title}</strong>
+                <strong>{ingredient.ingogo}</strong>
                 <button>Delete</button>
               </div>
             </div>

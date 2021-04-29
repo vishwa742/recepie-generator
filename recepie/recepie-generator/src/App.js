@@ -3,20 +3,23 @@ import { useState } from "react";
 import uuid from "react-uuid";
 import BaseIngredients from "./BaseIngredients";
 import MainIngredients from "./MainIngredients";
+const newIngredients = [];
+
 function App() {
-  const [ingredients, setIngredients] = useState([
-    { id: uuid(), title: "Salt" },
-    { id: uuid(), title: "Pepper" },
-    { id: uuid(), title: "Oil" },
-    { id: uuid(), title: "Bread" },
-  ]);
+  const [ingredients, setIngredients] = useState([]);
   const onAddIngredient = () => {
+    // setIngredients([newIngredients, ...ingredients]);
     console.log(ingredients);
-    const newIngredients = {
-      id: uuid(),
-      title: "Random Ingredient",
-    };
-    setIngredients([newIngredients, ...ingredients]);
+  };
+
+  const getIngredients = (data) => {
+    data.map((indrec) => {
+      setIngredients([...ingredients, "indrec"]);
+      console.log(ingredients);
+      //newIngredients.push(indrec);
+    });
+
+    // console.log("Reee", data);
   };
   return (
     <div className="App">
@@ -24,7 +27,7 @@ function App() {
         ingredients={ingredients}
         onAddIngredient={onAddIngredient}
       />
-      <MainIngredients />
+      <MainIngredients getIngredients={getIngredients} />
     </div>
   );
 }
