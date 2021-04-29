@@ -43,8 +43,11 @@ function ImageLoader({ getIngredients }) {
         setOcrText((oldArray) => [...oldArray, wordFiltered]);
       })
     );
+    // console.log(words);
+    // getIngredients(words);
     setIsLoading(true);
   };
+
   return (
     <>
       <h1 style={{ textAlign: "center" }}>Upload Your Grocery Bill</h1>
@@ -72,21 +75,8 @@ function ImageLoader({ getIngredients }) {
           <ul className="item">
             {words.map((ot) => {
               //console.log(ot);
-              if (
-                ot !== "Product" &&
-                ot !== "aty:" &&
-                ot !== "Z Total:" &&
-                ot !== "Summary item" &&
-                ot !== "Sales" &&
-                ot !== "item" &&
-                ot !== "Subtotat" &&
-                ot !== "Sales" &&
-                ot !== "Tax" &&
-                ot !== "Total:" &&
-                ot !== "Order"
-              ) {
-                return <div>{ot}</div>;
-              }
+
+              return <div>{ot}</div>;
             })}
           </ul>
         ) : (
