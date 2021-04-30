@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-function BaseIngredients({ ingredients, onAddIngredient }) {
+function BaseIngredients({ ingredients, onAddIngredient, onDeleteIngredient }) {
   const [filtered, setFiltered] = useState([]);
   const arrayStore = [];
   var res = [];
@@ -37,7 +37,9 @@ function BaseIngredients({ ingredients, onAddIngredient }) {
             <div className="app-sidebar-items">
               <div className="sidebar-note-title">
                 <strong>{ingredient}</strong>
-                <button>Delete</button>
+                <button onClick={() => onDeleteIngredient(ingredient)}>
+                  Delete
+                </button>
               </div>
             </div>
           ))}

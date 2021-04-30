@@ -8,20 +8,26 @@ function App() {
   const [ingredients, setIngredients] = useState([]);
   const onAddIngredient = () => {
     setIngredients(["Random Ingredient", ...ingredients]);
-    //console.log(ingredients);
   };
 
   const getIngredients = (data) => {
     data.map((item, i) => {
-      //console.log(item);
       setIngredients((ingredients) => [...ingredients, data[i]]);
     });
   };
+
+  const onDeleteIngredient = (idToDelete) => {
+    setIngredients(
+      ingredients.filter((ingredient) => ingredient !== idToDelete)
+    );
+  };
+
   return (
     <div className="App">
       <BaseIngredients
         ingredients={ingredients}
         onAddIngredient={onAddIngredient}
+        onDeleteIngredient={onDeleteIngredient}
       />
       <MainIngredients getIngredients={getIngredients} />
     </div>
