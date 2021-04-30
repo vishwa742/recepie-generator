@@ -7,7 +7,11 @@ import MainIngredients from "./MainIngredients";
 function App() {
   const [ingredients, setIngredients] = useState([]);
   const onAddIngredient = () => {
-    setIngredients(["Random Ingredient", ...ingredients]);
+    const newIngredients = {
+      id: uuid(),
+      title: "Random Ingredient",
+    };
+    setIngredients([newIngredients, ...ingredients]);
   };
 
   const getIngredients = (data) => {
@@ -18,7 +22,7 @@ function App() {
 
   const onDeleteIngredient = (idToDelete) => {
     setIngredients(
-      ingredients.filter((ingredient) => ingredient !== idToDelete)
+      ingredients.filter((ingredient) => ingredient.id !== idToDelete)
     );
   };
 

@@ -36,8 +36,8 @@ function BaseIngredients({ ingredients, onAddIngredient, onDeleteIngredient }) {
           {ingredients.map((ingredient) => (
             <div className="app-sidebar-items">
               <div className="sidebar-note-title">
-                <strong>{ingredient}</strong>
-                <button onClick={() => onDeleteIngredient(ingredient)}>
+                <strong>{ingredient.title}</strong>
+                <button onClick={() => onDeleteIngredient(ingredient.id)}>
                   Delete
                 </button>
               </div>
