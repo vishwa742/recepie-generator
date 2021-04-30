@@ -89,7 +89,7 @@ function ImageLoader({ getIngredients }) {
             getIngredients(words);
           }}
         >
-          STests
+          Add Ingredients
         </button>
         <div>
           {recepie.map((indrec) => (

@@ -8,12 +8,12 @@ function App() {
   const [ingredients, setIngredients] = useState([]);
   const onAddIngredient = () => {
     setIngredients(["Random Ingredient", ...ingredients]);
-    console.log(ingredients);
+    //console.log(ingredients);
   };
 
   const getIngredients = (data) => {
     data.map((item, i) => {
-      console.log(item);
+      //console.log(item);
       setIngredients((ingredients) => [...ingredients, data[i]]);
     });
   };

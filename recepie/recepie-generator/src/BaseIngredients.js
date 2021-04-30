@@ -1,9 +1,35 @@
+import React, { useState, useEffect } from "react";
+
 function BaseIngredients({ ingredients, onAddIngredient }) {
+  const [filtered, setFiltered] = useState([]);
+  const arrayStore = [];
+  var res = [];
+  const removeWords = [
+    "Product",
+    "aty:",
+    "Z Total:",
+    "Summary item",
+    "Sales",
+    "item",
+    "Subtotat",
+    "Sales",
+    "Tax",
+    "Total:",
+    "Order",
+  ];
+
+  useEffect(() => {
+    console.log("test", removeWords);
+    res = ingredients.filter((item) => !removeWords.includes(item));
+  }, []);
+
+  // setFiltered(filters);
+
   return (
     <>
       <div className="sidebar">
         <div className="app-sidebar-header">
-          <h1>Base Ingredients</h1>
+          <h1>Ingredients</h1>
           <button onClick={onAddIngredient}>Add</button>
         </div>
         <div className="app-sidebar-ing">
