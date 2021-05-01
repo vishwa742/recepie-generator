@@ -69,7 +69,7 @@ function ImageLoader({ onAddIngredient }) {
           maxFileSize={5242880}
         />
         <div className="ocr-button" onClick={runOcr}>
-          Run OCR
+          Get Ingredients
         </div>
         {ocrText.length > 0 ? (
           <ul className="item">
@@ -83,14 +83,16 @@ function ImageLoader({ onAddIngredient }) {
           <ClipLoader color="#ffffff" loading={isLoading} size={150} />
         )}
 
-        <button>Show Recepies</button>
-        <button
+        {/* <button>Show Recepies</button> */}
+
+        <div
+          className="ocr-button"
           onClick={() => {
             onAddIngredient(words);
           }}
         >
-          CLICK THIS NOW
-        </button>
+          Add Ingredients
+        </div>
         <div>
           {recepie.map((indrec) => (
             <div>
