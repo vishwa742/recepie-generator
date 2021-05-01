@@ -5,6 +5,7 @@ import Tesseract from "tesseract.js";
 import ImageUploader from "react-images-upload";
 import ClipLoader from "react-spinners/ClipLoader";
 import { useDropzone } from "react-dropzone";
+import bill1 from "./1.png";
 
 function ImageLoader({ onAddIngredient }) {
   const { acceptedFiles, getRootProps, getInputProps } = useDropzone();
@@ -27,19 +28,6 @@ function ImageLoader({ onAddIngredient }) {
     setPicUrl(pictureUrl);
   };
 
-  // const getRecepie = () => {
-  //   fetch(
-  //     `https://api.spoonacular.com/recipes/findByIngredients?apiKey=4b4353c06ae445229cad091a7b2abf34&ingredients=` +
-  //       items +
-  //       `&number=14&ranking=2`
-  //   )
-  //     .then((response) => response.json())
-  //     .then((data) => {
-  //       //console.log(data);
-  //       setRecepie(data);
-  //     });
-  // };
-
   const runOcr = () => {
     picUrl.forEach((picture) =>
       Tesseract.recognize(picture, "eng").then(({ data: { text } }) => {
@@ -61,6 +49,14 @@ function ImageLoader({ onAddIngredient }) {
   return (
     <>
       <h1 style={{ textAlign: "center" }}>Upload Your Grocery Bill</h1>
+
+      {/* <button
+        onClick={() => {
+          setPicUrl(bill1);
+        }}
+      >
+        Trial
+      </button> */}
 
       <div
         style={{
