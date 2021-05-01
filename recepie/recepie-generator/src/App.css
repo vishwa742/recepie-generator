@@ -17,6 +17,25 @@
   overflow-y: scroll;
 }
 
+.side {
+  background-color: rgb(241, 158, 48);
+  width: 30%;
+  height: 100vh;
+  border-right: 1px solid #ddd;
+}
+.side img {
+  margin: 1rem;
+  transition: 0.5s;
+}
+
+.side img:hover {
+  transform: scale(1.1);
+}
+
+.side h2 {
+  margin: 1rem;
+}
+
 .mainbar {
   background-color: rgb(137, 241, 228);
   width: 70%;
@@ -43,43 +62,39 @@ button:hover {
 }
 
 .recepie-list {
-  /* display: flex;
-  flex-wrap: wrap; */
-  /* background-image: url("webb-dark.png"); */
-  align-items: center;
-  justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+  float: left;
+  height: 250px;
 }
 
 .recepie {
-  position: relative;
-  display: inline-block;
-  float: left;
-  padding: 10px;
-  height: 250px;
-  margin: 2rem;
-  width: 200px;
-  border-radius: 3px;
-  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1);
-  background-color: rgb(241, 158, 48);
+  width: 210px;
+  margin: 1rem;
+  background-color: white;
 }
 
 .recepie img {
-  width: 100%;
-  height: auto;
+  max-width: 90%;
+  padding-left: 10px;
+  padding-top: 5px;
+}
+.recepie-title {
+  margin: 0;
+  padding: 1rem;
+  font: 1rem sans-serif;
 }
 
 /* 
-.recepie-title {
-  display: flex;
-  padding: 1rem;
-  align-items: center;
-  justify-content: space-between;
-}
 
 .movie-title h3 {
   margin: 0;
   color: white;
   font: 1em sans-serif;
+  .preview-title {
+  padding: 25px 25px 0 25px;
+  margin: 0;
+}
 }
 
 .movie img {

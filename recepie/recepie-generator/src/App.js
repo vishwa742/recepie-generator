@@ -4,6 +4,9 @@ import uuid from "react-uuid";
 import BaseIngredients from "./BaseIngredients";
 import MainIngredients from "./MainIngredients";
 import ShowRecepies from "./ShowRecepies";
+import bill1 from "./1.png";
+import bill2 from "./2.png";
+import bill3 from "./3.png";
 
 function App() {
   const [ingredients, setIngredients] = useState([]);
@@ -37,24 +40,38 @@ function App() {
 
   return (
     <div className="App">
-      <BaseIngredients
-        ingredients={ingredients}
-        onAddIngredient={onAddIngredient}
-        onDeleteIngredient={onDeleteIngredient}
-        getRecepies={getRecepies}
-      />
+      {ingredients.length > 0 ? (
+        <BaseIngredients
+          ingredients={ingredients}
+          onAddIngredient={onAddIngredient}
+          onDeleteIngredient={onDeleteIngredient}
+          getRecepies={getRecepies}
+        />
+      ) : (
+        <div
+          className="side"
+          style={{ alignItems: "center", justifyContent: "center" }}
+        >
+          <h2>Dont have a bill? Click on of the below images to try</h2>
+          <img src={bill1} width="420px" height="180px"></img>
+          <img src={bill2} width="420px" height="180px"></img>
+          <img src={bill3} width="420px" height="180px"></img>
+        </div>
+      )}
       {recepie.length < 1 ? (
         <MainIngredients onAddIngredient={onAddIngredient} />
       ) : (
         // <ShowRecepies recepie={recepie} />
         <div className="mainbar">
+          <h1 style={{ textAlign: "center" }}>Your Recepies</h1>
+
           {recepie.map((indrec) => (
-            <section className="recepie-list">
-              <article className="recepie">
-                <div>{indrec.title}</div>
+            <div className="recepie-list">
+              <div className="recepie">
                 <img src={indrec.image} />
-              </article>
-            </section>
+                <div className="recepie-title">{indrec.title}</div>
+              </div>
+            </div>
           ))}
         </div>
       )}

@@ -4,8 +4,17 @@ import React, { useState, useEffect } from "react";
 import Tesseract from "tesseract.js";
 import ImageUploader from "react-images-upload";
 import ClipLoader from "react-spinners/ClipLoader";
+import { useDropzone } from "react-dropzone";
 
 function ImageLoader({ onAddIngredient }) {
+  const { acceptedFiles, getRootProps, getInputProps } = useDropzone();
+
+  const files = acceptedFiles.map((file) => (
+    <li key={file.path}>
+      {file.path} - {file.size} bytes
+    </li>
+  ));
+
   const [picUrl, setPicUrl] = useState([]);
   const [ocrText, setOcrText] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -52,6 +61,7 @@ function ImageLoader({ onAddIngredient }) {
   return (
     <>
       <h1 style={{ textAlign: "center" }}>Upload Your Grocery Bill</h1>
+
       <div
         style={{
           display: "flex",
@@ -66,9 +76,8 @@ function ImageLoader({ onAddIngredient }) {
           withPreview={true}
           buttonText="Choose Images"
           onChange={onDrop}
-          imgExtension={[".jpg", ".gif", ".png"]}
-          maxFileSize={5242880}
-        />
+        ></ImageUploader>
+
         {words.length > 0 ? (
           <div
             className="ocr-button"
