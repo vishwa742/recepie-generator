@@ -7,35 +7,15 @@ import MainIngredients from "./MainIngredients";
 function App() {
   const [ingredients, setIngredients] = useState([]);
   const onAddIngredient = (data) => {
-    // data.map((ingred) => {
     data.map((ingred) => {
-      // data.map((ingred, i) => {
-      // const newIngredients = {
-      //   id: i,
-      //   title: ingred,
-      // };
-      //const newIngredients = ingred;
-
-      //console.log(newIngredients.title, newIngredients.id);
-      //setIngredients([...ingredients, ingred]);
       setIngredients((ingredients) => [...ingredients, ingred]);
     });
     console.log("test", typeof ingredients);
   };
 
-  // const getIngredients = (data) => {
-  //   data.map((item, i) => {
-  //     newIngredients.title = item;
-  //     newIngredients.id = uuid();
-  //   });
-  //   // setIngredients((newIngredients) => [...newIngredients, ingredients]);
-  //   setIngredients([newIngredients, ...ingredients]);
-  // };
-
   const onDeleteIngredient = (idToDelete) => {
-    setIngredients(
-      ingredients.filter((ingredient) => ingredient.id !== idToDelete)
-    );
+    const index = ingredients.indexOf(idToDelete);
+    setIngredients(ingredients.filter((ingredient, i) => i !== index));
   };
 
   return (
