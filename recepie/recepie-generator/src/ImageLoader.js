@@ -12,6 +12,7 @@ function ImageLoader({ onAddIngredient }) {
   const [words, setWords] = useState([]);
   const items = words.toString();
   const [recepie, setRecepie] = useState([]);
+  const [showIngredients, setShowIngredients] = useState(true);
 
   const onDrop = (_, pictureUrl) => {
     setPicUrl(pictureUrl);
@@ -71,7 +72,8 @@ function ImageLoader({ onAddIngredient }) {
         <div className="ocr-button" onClick={runOcr}>
           Get Ingredients
         </div>
-        {ocrText.length > 0 ? (
+        {/* {ocrText.length > 0 ? ( */}
+        {showIngredients && ocrText.length > 0 ? (
           <ul className="item">
             {words.map((ot) => {
               //console.log(ot);
@@ -89,6 +91,8 @@ function ImageLoader({ onAddIngredient }) {
           className="ocr-button"
           onClick={() => {
             onAddIngredient(words);
+            setShowIngredients(false);
+            setIsLoading(false);
           }}
         >
           Add Ingredients

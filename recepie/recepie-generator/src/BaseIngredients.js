@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-function BaseIngredients({ ingredients, onAddIngredient, onDeleteIngredient }) {
+function BaseIngredients({ ingredients, getRecepies, onDeleteIngredient }) {
   const [filtered, setFiltered] = useState([]);
   const arrayStore = [];
   var res = [];
@@ -18,26 +18,13 @@ function BaseIngredients({ ingredients, onAddIngredient, onDeleteIngredient }) {
     "Order",
   ];
 
-  // useEffect(() => {
-  //   console.log("test", removeWords);
-  //   res = ingredients.filter((item) => !removeWords.includes(item));
-  // }, []);
-
-  // setFiltered(filters);
-
   return (
     <>
       <div className="sidebar">
         <div className="app-sidebar-header">
           <h1>Ingredients</h1>
           {/* <button onClick={onAddIngredient}>Add</button> */}
-          <button
-            onClick={() => {
-              console.log(ingredients);
-            }}
-          >
-            Add
-          </button>
+          <button onClick={getRecepies}>Get Recepies</button>
         </div>
         <div className="app-sidebar-ing">
           {ingredients.map((ingredient) => (
