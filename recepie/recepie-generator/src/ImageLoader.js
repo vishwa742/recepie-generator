@@ -69,9 +69,28 @@ function ImageLoader({ onAddIngredient }) {
           imgExtension={[".jpg", ".gif", ".png"]}
           maxFileSize={5242880}
         />
-        <div className="ocr-button" onClick={runOcr}>
-          Get Ingredients
-        </div>
+        {words.length > 0 ? (
+          <div
+            className="ocr-button"
+            onClick={() => {
+              onAddIngredient(words);
+              setShowIngredients(false);
+              setIsLoading(false);
+            }}
+          >
+            Add Ingredients
+          </div>
+        ) : (
+          <div></div>
+        )}
+
+        {words.length <= 0 ? (
+          <div className="ocr-button" onClick={runOcr}>
+            Get Ingredients
+          </div>
+        ) : (
+          <div></div>
+        )}
         {/* {ocrText.length > 0 ? ( */}
         {showIngredients && ocrText.length > 0 ? (
           <ul className="item">
@@ -85,18 +104,6 @@ function ImageLoader({ onAddIngredient }) {
           <ClipLoader color="#ffffff" loading={isLoading} size={150} />
         )}
 
-        {/* <button>Show Recepies</button> */}
-
-        <div
-          className="ocr-button"
-          onClick={() => {
-            onAddIngredient(words);
-            setShowIngredients(false);
-            setIsLoading(false);
-          }}
-        >
-          Add Ingredients
-        </div>
         <div>
           {recepie.map((indrec) => (
             <div>
