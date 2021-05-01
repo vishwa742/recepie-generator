@@ -1,9 +1,9 @@
 import ImageLoader from "./ImageLoader";
-function MainIngredients({ getIngredients }) {
+function MainIngredients({ onAddIngredient }) {
   return (
     <>
       <div className="mainbar">
-        <ImageLoader getIngredients={getIngredients} />
+        <ImageLoader onAddIngredient={onAddIngredient} />
       </div>
     </>
   );

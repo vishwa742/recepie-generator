@@ -6,19 +6,31 @@ import MainIngredients from "./MainIngredients";
 
 function App() {
   const [ingredients, setIngredients] = useState([]);
-  const onAddIngredient = () => {
-    const newIngredients = {
-      id: uuid(),
-      title: "Random Ingredient",
-    };
-    setIngredients([newIngredients, ...ingredients]);
+  const onAddIngredient = (data) => {
+    // data.map((ingred) => {
+    data.map((ingred) => {
+      // data.map((ingred, i) => {
+      // const newIngredients = {
+      //   id: i,
+      //   title: ingred,
+      // };
+      //const newIngredients = ingred;
+
+      //console.log(newIngredients.title, newIngredients.id);
+      //setIngredients([...ingredients, ingred]);
+      setIngredients((ingredients) => [...ingredients, ingred]);
+    });
+    console.log("test", typeof ingredients);
   };
 
-  const getIngredients = (data) => {
-    data.map((item, i) => {
-      setIngredients((ingredients) => [...ingredients, data[i]]);
-    });
-  };
+  // const getIngredients = (data) => {
+  //   data.map((item, i) => {
+  //     newIngredients.title = item;
+  //     newIngredients.id = uuid();
+  //   });
+  //   // setIngredients((newIngredients) => [...newIngredients, ingredients]);
+  //   setIngredients([newIngredients, ...ingredients]);
+  // };
 
   const onDeleteIngredient = (idToDelete) => {
     setIngredients(
@@ -33,7 +45,7 @@ function App() {
         onAddIngredient={onAddIngredient}
         onDeleteIngredient={onDeleteIngredient}
       />
-      <MainIngredients getIngredients={getIngredients} />
+      <MainIngredients onAddIngredient={onAddIngredient} />
     </div>
   );
 }

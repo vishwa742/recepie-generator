@@ -5,7 +5,7 @@ import Tesseract from "tesseract.js";
 import ImageUploader from "react-images-upload";
 import ClipLoader from "react-spinners/ClipLoader";
 
-function ImageLoader({ getIngredients }) {
+function ImageLoader({ onAddIngredient }) {
   const [picUrl, setPicUrl] = useState([]);
   const [ocrText, setOcrText] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -17,18 +17,18 @@ function ImageLoader({ getIngredients }) {
     setPicUrl(pictureUrl);
   };
 
-  const getRecepie = () => {
-    fetch(
-      `https://api.spoonacular.com/recipes/findByIngredients?apiKey=4b4353c06ae445229cad091a7b2abf34&ingredients=` +
-        items +
-        `&number=14&ranking=2`
-    )
-      .then((response) => response.json())
-      .then((data) => {
-        //console.log(data);
-        setRecepie(data);
-      });
-  };
+  // const getRecepie = () => {
+  //   fetch(
+  //     `https://api.spoonacular.com/recipes/findByIngredients?apiKey=4b4353c06ae445229cad091a7b2abf34&ingredients=` +
+  //       items +
+  //       `&number=14&ranking=2`
+  //   )
+  //     .then((response) => response.json())
+  //     .then((data) => {
+  //       //console.log(data);
+  //       setRecepie(data);
+  //     });
+  // };
 
   const runOcr = () => {
     picUrl.forEach((picture) =>
@@ -83,13 +83,13 @@ function ImageLoader({ getIngredients }) {
           <ClipLoader color="#ffffff" loading={isLoading} size={150} />
         )}
 
-        <button onClick={getRecepie}>Show Recepies</button>
+        <button>Show Recepies</button>
         <button
           onClick={() => {
-            getIngredients(words);
+            onAddIngredient(words);
           }}
         >
-          Add Ingredients
+          CLICK THIS NOW
         </button>
         <div>
           {recepie.map((indrec) => (
