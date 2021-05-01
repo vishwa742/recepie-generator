@@ -46,7 +46,17 @@ function App() {
       {recepie.length < 1 ? (
         <MainIngredients onAddIngredient={onAddIngredient} />
       ) : (
-        <ShowRecepies />
+        // <ShowRecepies recepie={recepie} />
+        <div className="mainbar">
+          {recepie.map((indrec) => (
+            <section className="recepie-list">
+              <article className="recepie">
+                <div>{indrec.title}</div>
+                <img src={indrec.image} />
+              </article>
+            </section>
+          ))}
+        </div>
       )}
     </div>
   );

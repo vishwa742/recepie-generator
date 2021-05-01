@@ -42,6 +42,52 @@ button:hover {
   display: flex;
 }
 
+.recepie-list {
+  /* display: flex;
+  flex-wrap: wrap; */
+  /* background-image: url("webb-dark.png"); */
+  align-items: center;
+  justify-content: center;
+}
+
+.recepie {
+  position: relative;
+  display: inline-block;
+  float: left;
+  padding: 10px;
+  height: 250px;
+  margin: 2rem;
+  width: 200px;
+  border-radius: 3px;
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1);
+  background-color: rgb(241, 158, 48);
+}
+
+.recepie img {
+  width: 100%;
+  height: auto;
+}
+
+/* 
+.recepie-title {
+  display: flex;
+  padding: 1rem;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.movie-title h3 {
+  margin: 0;
+  color: white;
+  font: 1em sans-serif;
+}
+
+.movie img {
+  max-width: 100%;
+  transition: transform 0.5s ease;
+  overflow: hidden;
+} */
+
 /* CSS From https://github.com/jrgrimshaw/notes-app-tutorial/blob/main/src/App.css  */
 
 .app-sidebar {
