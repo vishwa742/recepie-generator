@@ -29,7 +29,7 @@ function App() {
     fetch(
       `https://api.spoonacular.com/recipes/findByIngredients?apiKey=4b4353c06ae445229cad091a7b2abf34&ingredients=` +
         items +
-        `&number=14&ranking=2`
+        `&number=20&ranking=2`
     )
       .then((response) => response.json())
       .then((data) => {

@@ -24,7 +24,9 @@ function BaseIngredients({ ingredients, getRecepies, onDeleteIngredient }) {
         <div className="app-sidebar-header">
           <h1>Ingredients</h1>
           {/* <button onClick={onAddIngredient}>Add</button> */}
-          <button onClick={getRecepies}>Get Recepies</button>
+          <button onClick={getRecepies}>
+            <strong>Get Recepies</strong>
+          </button>
         </div>
         <div className="app-sidebar-ing">
           {ingredients.map((ingredient) => (
